@@ -17,6 +17,7 @@ Since we are creating an authentication/authorization system from scratch, the f
   - Refresh Tokens WhiteList (if user will want to log in  and whitelisted.Sesssions.length > 8,
 we will reset others 7 tokens and clear whitelistedSessions)
   - Auto destroying feature for Expired Refresh Tokens
+  - For more advanced features, maybe we shoud save userIP and user_fingerprint in the refresh_tokens table
 
 License
 ----
