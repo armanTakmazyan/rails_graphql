@@ -1,24 +1,26 @@
-# README
+# Ruby On Rails Test With Graphql
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Necessary commands to start the project:
 
-Things you may want to cover:
+```sh
+$ gem install bundler
+$ gem update bundler
+$ bundle install
+$ rails db:create
+$ rails db:migrate
+$ rails db:seed
+$ rails server
+```
+Since we are creating an authentication/authorization system from scratch, the following features should be added in the future:
+  - Rate Limiting
+  - Access Tokens BlackList
+  - Refresh Tokens WhiteList (if user will want to log in  and whitelisted.Sesssions.length > 8,
+we will reset others 7 tokens and clear whitelistedSessions)
+  - Auto destroying feature for Expired Refresh Tokens
 
-* Ruby version
+License
+----
 
-* System dependencies
+MIT
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
