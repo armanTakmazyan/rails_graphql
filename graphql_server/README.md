@@ -21,6 +21,8 @@ we will reset others 7 tokens and clear whitelistedSessions)
   - Auto destroying feature for Expired Refresh Tokens (Or For LogOut or Blocked Users)
   - For more advanced features, maybe we shoud save userIP and user_fingerprint in the refresh_tokens table
   - And we must use another package for dealing with jwt :)
+
+  
 License
 ----
 
