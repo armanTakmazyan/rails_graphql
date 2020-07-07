@@ -5,4 +5,5 @@ class User < ApplicationRecord
     validates :name, presence: true, length: { minimum: 2, maximum: 100 }
     validates :email, presence: true, length: { maximum: 100 }, format: { with: URI::MailTo::EMAIL_REGEXP, message: 'Requires a valid email format' }, uniqueness: true
     validates :password, presence: true, length: { minimum: 4, maximum: 100 }
+    validates :admin, allow_blank: true
 end
