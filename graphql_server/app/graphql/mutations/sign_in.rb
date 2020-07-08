@@ -21,7 +21,7 @@ module Mutations
       else
         {
           user: user, 
-          accessToken: AuthToken.generate_access_token(user)
+          accessToken: Utils::AuthToken.generate_access_token(user)
         }  
       end
 

@@ -50,6 +50,6 @@ class GraphqlController < ApplicationController
     return nil if request.headers['Authorization'].blank?
     token = request.headers['Authorization'].split(' ').last
     return nil if token.blank?
-    AuthToken.verify(token)
+    Utils::AuthToken.verify(token)
   end
 end

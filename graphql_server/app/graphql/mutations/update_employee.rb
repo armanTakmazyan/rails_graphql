@@ -7,6 +7,7 @@ module Mutations
     argument :employee_id, ID, required: true
 
     def resolve(payload:, employee_id:, clientMutationId: nil)
+      #Utils::BuildErrors.auth_required(context)
       employee = Employee.find(employee_id)
 
       if employee.update(first_name: payload.first_name, last_name: payload.last_name, email: payload.email, phone: payload.phone, company_id: payload.company_id)
@@ -14,9 +15,7 @@ module Mutations
           employee: employee
         }
       else 
-        {
-          errors: employee.errors
-        }
+        Utils::BuildErrors.build(employee, context)
       end
     end
   end
