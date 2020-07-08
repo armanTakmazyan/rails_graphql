@@ -1,7 +1,6 @@
 module Mutations
   class DeleteCompany < BaseMutation
     field :result, String, null: true
-    field :errors, Types::ValidationErrorsType, null: true
 
     argument :company_id, ID, required: true
 

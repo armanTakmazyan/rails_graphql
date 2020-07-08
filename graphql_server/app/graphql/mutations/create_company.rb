@@ -1,7 +1,6 @@
 module Mutations
   class CreateCompany < BaseMutation
     field :company, Types::CompanyType, null: true
-    field :errors, Types::ValidationErrorsType, null: true
 
     argument :payload, Types::CompanyInputType, required: true
 

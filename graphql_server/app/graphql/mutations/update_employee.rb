@@ -1,7 +1,6 @@
 module Mutations
   class UpdateEmployee < BaseMutation
     field :employee, Types::EmployeeType, null: true
-    field :errors, Types::ValidationErrorsType, null: true
 
     argument :payload, Types::EmployeeInputType, required: true
     argument :employee_id, ID, required: true

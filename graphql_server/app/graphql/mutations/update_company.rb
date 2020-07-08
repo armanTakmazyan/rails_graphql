@@ -1,7 +1,6 @@
 module Mutations
   class UpdateCompany < BaseMutation
     field :company, Types::CompanyType, null: true
-    field :errors, Types::ValidationErrorsType, null: true
 
     argument :payload, Types::CompanyInputType, required: true
     argument :company_id, ID, required: true

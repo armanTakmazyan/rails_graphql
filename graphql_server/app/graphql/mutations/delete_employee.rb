@@ -1,7 +1,6 @@
 module Mutations
   class DeleteEmployee < BaseMutation
     field :result, String, null: true
-    field :errors, Types::ValidationErrorsType, null: true
 
     argument :employee_id, ID, required: true
 

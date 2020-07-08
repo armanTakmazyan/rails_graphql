@@ -4,15 +4,23 @@ module Types
     field :companies, [Types::CompanyType], null: false 
 
     def companies
+      #Utils::BuildErrors.auth_required context
       Company.all
     end
 
     field :company, Types::CompanyType, null: false do
-      argument :id, ID, required: true  
+      argument :id, ID, required: true
     end
 
-    def company(id:)
-      Company.find(id)
+    def company(**args)
+      #Utils::BuildErrors.auth_required context
+      
+      resc_obj = Rescuable.new ->(object, args, context) {
+        Company.find(args[:id])
+      }
+
+      resc_obj.call(object, args, context)
+      
     end
 
 
@@ -20,12 +28,8 @@ module Types
     field :employees, [Types::EmployeeType], null: false 
 
     def employees
-      if context[:current_user].blank?
-        raise GraphQL::ExecutionError.new("Authentication required")
-      else
+        #Utils::BuildErrors.auth_required context
         Employee.all
-      end
-      
     end
 
     field :employee, Types::EmployeeType, null: false do
@@ -33,6 +37,7 @@ module Types
     end
 
     def employee(id:)
+      #Utils::BuildErrors.auth_required context
       Employee.find(id)
     end
 
