@@ -5,7 +5,10 @@ module Types
 
     def companies
       #Utils::BuildErrors.auth_required context
-      Company.all
+      resc_obj = Rescuable.new ->(object, args, context) {
+        Company.all
+      }
+      resc_obj.call(object, args, context)
     end
 
     field :company, Types::CompanyType, null: false do
@@ -29,16 +32,22 @@ module Types
 
     def employees
         #Utils::BuildErrors.auth_required context
-        Employee.all
+        resc_obj = Rescuable.new ->(object, args, context) {
+          Employee.all
+        }
+        resc_obj.call(object, args, context)
     end
 
     field :employee, Types::EmployeeType, null: false do
       argument :id, ID, required: true  
     end
 
-    def employee(id:)
+    def employee(**args)
       #Utils::BuildErrors.auth_required context
-      Employee.find(id)
+      resc_obj = Rescuable.new ->(object, args, context) {
+        Employee.find(args[:id])
+      }
+      resc_obj.call(object, args, context)
     end
 
   end

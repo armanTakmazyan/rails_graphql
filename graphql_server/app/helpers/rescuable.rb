@@ -11,8 +11,8 @@ class Rescuable
         GraphQL::ExecutionError.new e.message, extensions: { code: 'USER_INPUT_ERROR' }
     rescue ActiveRecord::RecordInvalid => e
         error_messages = e.record.errors.full_messages.join("\n")
-        GraphQL::ExecutionError.new "Validation failed: #{error_messages}."
+        GraphQL::ExecutionError.new "Validation failed: #{error_messages}.", extensions: { code: 'USER_INPUT_ERROR' }
     rescue StandardError => e
-        GraphQL::ExecutionError.new e.message
+        GraphQL::ExecutionError.new e.message, extensions: { code: "INTERNAL_SERVER_ERROR" }
     end
 end
